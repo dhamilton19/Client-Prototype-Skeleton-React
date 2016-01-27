@@ -1,9 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-
 var path = require('path');
-
 var paths = gulp.paths;
 
 gulp.task('copy', function () {

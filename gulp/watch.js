@@ -1,23 +1,19 @@
 'use strict';
 
 var path = require('path');
-
 var gulp = require('gulp');
-
-var paths = gulp.paths;
-
 var runSequence = require('run-sequence');
-
 var browserSync = require('browser-sync');
+var paths = gulp.paths;
 
 gulp.task('watch', ['watch:init'], function () {
 
-    gulp.watch(path.join(paths.src, '/**/*.css'), function(event){
+    gulp.watch(path.join(paths.src, '/**/*.css'), function(){
         runSequence('styles', 'reload:browser');
     });
 
-    gulp.watch(path.join(paths.src, '/**/*.html'), function (event) {
-        runSequence('clean', 'copy', 'reload:browser');
+    gulp.watch(path.join(paths.src, '/**/*.html'), function () {
+        runSequence('copy', 'reload:browser');
     });
 
 });

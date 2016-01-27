@@ -1,9 +1,7 @@
 {
-  "name": "client_prototype_skeleton",
+  "name": "client_prototype_skeleton_react",
   "version": "1.0.0",
-  "description": "A barebones project to quickly create a prototype with a client library",
   "author": "David Hamilton",
-  "license": "ISC",
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
@@ -21,6 +19,7 @@
     "path": "^0.12.7",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   },

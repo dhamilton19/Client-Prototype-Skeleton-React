@@ -5,10 +5,10 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
-var gutil = require('gulp-util');
-var path = require('path');
-var paths = gulp.paths;
+var buffer = require('vinyl-buffer');
 var browserSync = require('browser-sync');
+var $ = require('gulp-load-plugins')();
+var paths = gulp.paths;
 
 gulp.task('scripts', function () {
     var bundler = browserify({
@@ -18,6 +18,7 @@ gulp.task('scripts', function () {
 
     bundler = watchify(bundler);
     bundler.on('update', bundle);
+    bundler.on('log', $.util.log);
 
     bundler.transform(babelify, {
         presets: ['es2015', 'react']
@@ -25,12 +26,16 @@ gulp.task('scripts', function () {
 
     function bundle() {
         return bundler.bundle()
-            .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-            .pipe(source('bundle.js'))
-            .pipe(gulp.dest(paths.tmp + '/serve/'))
+            .on('error', $.util.log.bind($.util, 'Browserify Error'))
             .on('end', function(){
                 browserSync.reload();
-            });
+            })
+            .pipe(source('bundle.js'))
+            .pipe(buffer())
+            .pipe($.sourcemaps.init({loadMaps: true}))
+            .pipe($.sourcemaps.write('./'))
+            .pipe(gulp.dest(paths.tmp + '/serve/'))
+            .pipe($.size());
     }
 
     return bundle();

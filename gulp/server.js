@@ -1,12 +1,9 @@
 'use strict';
 
 var gulp = require('gulp');
-
-var paths = gulp.paths;
-
-var port = gulp.port;
-
 var browserSync = require('browser-sync');
+var paths = gulp.paths;
+var port = gulp.port;
 
 function browserSyncInit(baseDir, files, browser) {
     browser = browser === undefined ? 'default' : browser;
@@ -25,8 +22,6 @@ gulp.task('serve', ['watch'], function () {
     browserSyncInit(
         paths.tmp + '/serve',
         [
-            paths.tmp + '/serve/styles.css',
-            paths.tmp + '/serve/bundle.js',
-            paths.tmp + '/serve/index.html'
+            paths.tmp + '/serve/**'
         ]);
 });
