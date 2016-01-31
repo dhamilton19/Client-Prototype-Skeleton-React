@@ -1,11 +1,13 @@
-# Client-Prototype-Skeleton
-This is a repository that can be used for client library prototyping. 
-It is barebones but will make it quick and simple to get a prototype up and running.
+# Client-Prototype-Skeleton-React
+This is a repository that can be used for prototyping with React.
+It is barebones but will make it quick and simple to get a prototype up and running without all the bloat from other projects.
 
-The project uses Gulp and BrowserSync to automatically inject scripts, styles and bower components onto the index.html and then reloads the browser.
+The project uses Gulp and BrowserSync to automatically compile react code along with npm modules and then reload the browser.
+Browserify will bundle all front end dependencies.
 
 ##Using
-Follow Set up below then Run and start developing /app directory.
+Follow Set up below then Run and start developing /src directory.
+Use npm to manage front end and back end packages.
 
 ##Set up
 1. Open cmd or terminal and run `npm install`
